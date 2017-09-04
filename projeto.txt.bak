@@ -1,0 +1,25 @@
+%{
+
+#include<stdio.h>
+
+%}
+
+%%
+"if"|"else"|"while"|"do"|"for"|"function"|"break"|"continue"|"public"|"private"|"protected"|"friend"|"static"|"class"|"import"|"try"|"catch"|"finally"|"foreach"|"in"|"or"|"and"|"extends"|"implements"|"abstract"|"this"|"interface"|"enum"|"switch"|"case" {printf("%s: Palavra Chave\n", yytext);}
+[0-1]+ {printf("%s: binario", yytext);}
+[0-9]+ {printf("%s: decimal", yytext);}
+"+"|"-"|"*"|"/"|"%"|"="|"!"|"|"|"&"|"^"|">"|"<"|"{"|"}"|"("|")"|"["|"]"|"?"|":" {printf("%s: Simbolo Especial\n", yytext);}
+[a-zA-Z][a-z|0-9]* {printf("%s: Identifier", yytext);}
+%%
+
+int yywrap()
+{
+return 1;
+}
+
+main()
+{
+printf("Enter a string\n");
+yylex();
+
+}
